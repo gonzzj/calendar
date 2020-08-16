@@ -1,13 +1,23 @@
 import React from 'react';
-import { ThemeProvider, CSSReset } from '@chakra-ui/core';
+import './scss/style.scss';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import reducer from './reducers';
 import Calendar from './features/calendar';
+
+const store = createStore(
+	reducer,
+	composeWithDevTools()
+);
 
 const App = () => {
 	return (
-		<ThemeProvider>
-			<CSSReset />
-			<Calendar />
-		</ThemeProvider>
+		<Provider store={store}>
+			<div className={"container mt-4"}>
+				<Calendar />
+			</div>
+		</Provider>
 	);
 }
 

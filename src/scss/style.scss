@@ -1,0 +1,37 @@
+@import 'bulma';
+
+.calendar-column {
+    width: 14.285714285714285714285714285714%;
+    flex: none;
+}
+
+.calendar-header {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #61a6ff;
+    color: #fff;
+    font-weight: bold;
+}
+
+.calendar-cell {
+    height: 112px;
+    font-weight: bold;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
+    &:nth-child(7n+1) {
+        border-left: 1px solid #ccc;
+    }
+
+    span {
+        display: block;
+        margin-top: 8px;
+        margin-left: 14px;
+    }
+}
+
+.calendar-day {
+    cursor: pointer;
+}
