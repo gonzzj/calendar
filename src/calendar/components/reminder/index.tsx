@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { isEmpty } from 'lodash';
 import { setReminderInput, saveReminder, closeReminder } from '../../../actions/reminder';
 
 interface IReminder {
@@ -56,7 +57,7 @@ const Reminder = ({ reminder } : IReminder) =>  {
                     </div>
                 </section>
                 <footer className={"modal-card-foot"}>
-                    <button className={"button is-success"} onClick={() => dispatch(saveReminder(reminder))}>Save reminder</button>
+                    <button className={"button is-success"} onClick={() => dispatch(saveReminder(reminder))} disabled={isEmpty(reminder.title) || isEmpty(reminder.hour)}>Save reminder</button>
                     <button className={"button"} onClick={() => dispatch(closeReminder())}>Cancel</button>
                 </footer>
             </div>

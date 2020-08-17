@@ -51,7 +51,7 @@ export default (state = initialState, action: any) => {
 				hour: payload.reminder.hour,
 				title: payload.reminder.title,
 				description: payload.reminder.description,
-				backgroundColor: payload.reminder.backgroundColor
+				backgroundColor: payload.reminder.backgroundColor || "#3273dc"
 			};
 
 			for (const day of newMonth) {
