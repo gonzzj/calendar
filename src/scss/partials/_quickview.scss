@@ -1,0 +1,9 @@
+// --- QUICKVIEW ---
+
+.quickview-block {
+    transition: opacity 500ms ease;
+
+    &:hover {
+        opacity: .8;
+    }
+}

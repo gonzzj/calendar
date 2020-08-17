@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { sortBy } from 'lodash';
+import moment from 'moment';
 import { closeList, deleteReminders } from '../../../actions/calendar';
 import { openReminder, editReminder } from '../../../actions/reminder';
 
@@ -16,7 +17,7 @@ const List = ({ show, day } : IList) => {
     return (
         <div className={"quickview " + (show ? "is-active" : "")}>
             <header className={"quickview-header"}>
-                <strong className={"title"}>{"August " + day?.number}</strong>
+                <strong className={"title"}>{moment().format('MMMM') + " " + day?.number}</strong>
                 <span className={"delete"} data-dismiss="quickview" onClick={() => dispatch(closeList())}></span>
             </header>
             <div className={"quickview-body my-4"}>
@@ -27,7 +28,7 @@ const List = ({ show, day } : IList) => {
                         style={{backgroundColor: reminder.backgroundColor, color: "#fff", cursor: "pointer"}}
                         onClick={() => dispatch(editReminder(reminder, day.number))}
                     >
-                        {reminder.title}
+                        {reminder.hour + " - " + reminder.title}
                     </div>
                 ))}
             </div>

@@ -30,15 +30,15 @@ const Reminder = ({ reminder } : IReminder) =>  {
                 </header>
                 <section className={"modal-card-body"}>
                     <div className={"field"}>
-                        <label className={"label"}>Title</label>
+                        <label className={"label"}>Title <span>*</span></label>
                         <div className={"control"}>
                             <input className={"input"} type="text" maxLength={30} placeholder="Title" value={reminder.title} onChange={(e) => dispatch(setReminderInput(e.target.value, 'title'))} />
                         </div>
                     </div>
                     <div className={"field"}>
-                        <label className={"label"}>Hour</label>
+                        <label className={"label"}>Hour <span>*</span></label>
                         <div className={"control"}>
-                            <input type="time" value={reminder.hour} onChange={(e) => dispatch(setReminderInput(e.target.value, 'hour'))} />
+                            <input className={"input"} type="time" value={reminder.hour} onChange={(e) => dispatch(setReminderInput(e.target.value, 'hour'))} />
                         </div>
                     </div>
                     <div className={"field"}>

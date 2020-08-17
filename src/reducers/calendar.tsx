@@ -57,6 +57,7 @@ export default (state = initialState, action: any) => {
 			for (const day of newMonth) {
 				if(day.number === payload.reminder.day) {
 					if (isUndefined(newReminder.id)) {
+						debugger;
 						newReminder.id = newMonth[payload.reminder.day - 1].reminders.length; 
 						newMonth[payload.reminder.day - 1].reminders.push(newReminder);
 					} else {
@@ -69,7 +70,8 @@ export default (state = initialState, action: any) => {
 
 			return {
 				...state,
-				month: newMonth
+				month: newMonth,
+				showList: false
 			}
 
 		case types.DELETE_REMINDERS:
