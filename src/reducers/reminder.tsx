@@ -3,6 +3,7 @@ import * as types from '../actions/types';
 const initialState = {
 	show: false,
 	title: '',
+	hour: '',
 	description: '',
 	backgroundColor: ''
 };
@@ -23,6 +24,7 @@ export default (state = initialState, action: any) => {
 				...state,
 				show: true,
 				title: payload.reminder.title,
+				hour: payload.reminder.hour,
 				description: payload.reminder.description,
 				backgroundColor: payload.reminder.backgroundColor
 			};

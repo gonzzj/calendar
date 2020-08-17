@@ -28,7 +28,7 @@ export const setReminderInput = (value: string, key: string) => {
 	};
 };
 
-export const saveReminder = (day: number, hour: Date, title: string, description: string, backgroundColor: string) => {
+export const saveReminder = (day: number, hour: string, title: string, description: string, backgroundColor: string) => {
 	return {
 		type: types.SAVE_REMINDER,
 		payload: {

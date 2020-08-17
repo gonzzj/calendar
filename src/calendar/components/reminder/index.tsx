@@ -7,7 +7,7 @@ interface IReminder {
     title: string,
     description: string,
     day: number,
-    hour: Date,
+    hour: string,
     backgroundColor: string
 };
 
@@ -34,7 +34,7 @@ const Reminder = ({ show, day, hour, title, description, backgroundColor } : IRe
                     <div className={"field"}>
                         <label className={"label"}>Hour</label>
                         <div className={"control"}>
-                            <input type="time" />
+                            <input type="time" value={hour} onChange={(e) => dispatch(setReminderInput(e.target.value, 'hour'))} />
                         </div>
                     </div>
                     <div className={"field"}>

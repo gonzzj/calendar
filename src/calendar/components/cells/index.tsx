@@ -1,5 +1,5 @@
 import React from 'react';
-import { isEmpty } from 'lodash';
+import { isEmpty, sortBy } from 'lodash';
 
 interface ICells {
     month: Array<string>,
@@ -16,14 +16,14 @@ const Cells = ({ month, openList, openReminder } : ICells) => (
                 onClick={() => isEmpty(day.reminders) ? openReminder(day.number) : openList(day.number)}
             >
                 <strong>{day.number}</strong>
-                {day.reminders.map((reminder: any, indexReminder: number) => {
+                {sortBy(day.reminders, ['hour']).map((reminder: any, indexReminder: number) => {
                     if (indexReminder === 2) {
                         return <span>...</span>
                     } else if (indexReminder > 2) {
                         return <></>;
                     }
 
-                    return <span className={"tag"} style={{backgroundColor: reminder.backgroundColor, color: "#fff"}} key={indexReminder}>{reminder.title}</span>;
+                    return <span className={"tag"} style={{backgroundColor: reminder.backgroundColor, color: "#fff"}} key={indexReminder}>{reminder.hour + " - " + reminder.title}</span>;
                 })}
             </div>
         ))}
