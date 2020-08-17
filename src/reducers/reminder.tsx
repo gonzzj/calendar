@@ -2,18 +2,32 @@ import * as types from '../actions/types';
 
 const initialState = {
 	show: false,
-	day: 0,
-	hour: 0,
+	title: '',
+	description: '',
+	color: ''
 };
 
 export default (state = initialState, action: any) => {
 	const { type, payload } = action;
-
+	
 	switch (type) {
-		case types.SET_REMINDER:
+		case types.OPEN_REMINDER:
 			return {
-				...state
+				...state,
+				show: true,
+				day: payload.day,
+				hour: payload.hour
 			};
+
+		case types.SET_REMINDER_INPUT:
+			return {
+				...state,
+				[payload.key]: payload.value
+			};
+
+		case types.SAVE_REMINDER:
+		case types.CLOSE_REMINDER:
+			return initialState;
 
 		default:
 			return state;

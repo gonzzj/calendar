@@ -15,7 +15,8 @@ export default (state = initialState, action: any) => {
 
 			while (date.getMonth() === monthIndex) {
 				result.push({
-					number: date.getDate()
+					number: date.getDate(),
+					reminders: []
 				});
 				
 				date.setDate(date.getDate() + 1);
@@ -24,7 +25,27 @@ export default (state = initialState, action: any) => {
 			return {
 				...state,
 				month: result,
-            };
+			};
+			
+		case types.SAVE_REMINDER:
+			const newMonth: Array<any> = [...state.month];
+			const newReminder = {
+				hour: payload.hour,
+				title: payload.title,
+				description: payload.description
+			};
+
+			for (const day of newMonth) {
+				if(day.number === payload.day) {
+					newMonth[payload.day - 1].reminders.push(newReminder);
+					break;
+				}
+			}
+
+			return {
+				...state,
+				month: newMonth
+			}
 
 		default:
 			return state;

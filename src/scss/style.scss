@@ -16,19 +16,24 @@
 }
 
 .calendar-cell {
-    height: 112px;
-    font-weight: bold;
+    height: 148px;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
+    transition: background-color 500ms ease;
 
     &:nth-child(7n+1) {
         border-left: 1px solid #ccc;
     }
 
-    span {
-        display: block;
+    &:hover {
+        background-color: #efefef;
+    }
+
+    span, strong {
+        display: flex;
         margin-top: 8px;
         margin-left: 14px;
+        justify-content: flex-start;
     }
 }
 
