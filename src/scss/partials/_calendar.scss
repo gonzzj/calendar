@@ -1,0 +1,44 @@
+// --- CALENDAR ---
+
+.calendar {
+    &-column {
+        width: 14.285714285714285714285714285714%;
+        flex: none;
+    }
+
+    &-header {
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #61a6ff;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    &-cell {
+        height: 148px;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        transition: background-color 500ms ease;
+    
+        &:nth-child(7n+1) {
+            border-left: 1px solid #ccc;
+        }
+    
+        &:hover {
+            background-color: #efefef;
+        }
+    
+        span, strong {
+            display: flex;
+            margin-top: 8px;
+            margin-left: 14px;
+            justify-content: flex-start;
+        }
+    }
+
+    &-day {
+        cursor: pointer;
+    }
+}
