@@ -1,7 +1,8 @@
 import * as types from '../actions/types';
 
 const initialState = {
-	month: []
+	month: [],
+	showList: false
 };
 
 export default (state = initialState, action: any) => {
@@ -26,6 +27,19 @@ export default (state = initialState, action: any) => {
 				...state,
 				month: result,
 			};
+		
+		case types.OPEN_LIST:
+			return {
+				...state,
+				showList: true,
+				selectedDay: payload.day
+			}
+
+		case types.CLOSE_LIST:
+			return {
+				...state,
+				showList: false
+			}
 			
 		case types.SAVE_REMINDER:
 			const newMonth: Array<any> = [...state.month];

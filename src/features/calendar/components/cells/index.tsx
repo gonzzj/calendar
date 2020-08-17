@@ -3,13 +3,18 @@ import { isEmpty } from 'lodash';
 
 interface ICells {
     month: Array<string>,
-    onClick: Function
+    openList: Function,
+    openReminder: Function
 };
 
-const Cells = ({ month, onClick } : ICells) => (
+const Cells = ({ month, openList, openReminder } : ICells) => (
     <div className={"columns is-gapless is-multiline"}>
         {month.map((day: any, indexDay: number) => (
-            <div className={"column calendar-cell calendar-column " + (!isEmpty(day) ? "calendar-day" : "")} key={indexDay} onClick={() => onClick(day.number, day.number)}>
+            <div 
+                className={"column calendar-cell calendar-column " + (!isEmpty(day) ? "calendar-day" : "")} 
+                key={indexDay} 
+                onClick={() => isEmpty(day.reminders) ? openReminder(day.number, day.number) : openList(day.number)}
+            >
                 <strong>{day.number}</strong>
                 {day.reminders.map((reminder: any, indexReminder: number) => {
                     if (indexReminder === 2) {

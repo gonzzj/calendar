@@ -1,6 +1,8 @@
 // --- CALENDAR ---
 
 export const SET_MONTH: string = 'SET_MONTH';
+export const OPEN_LIST: string = 'OPEN_LIST';
+export const CLOSE_LIST: string = 'CLOSE_LIST';
 
 // --- REMINDER ---
 
