@@ -1,11 +1,19 @@
 import * as types from './types';
 
-export const openReminder = (day: number, hour: Date) => {
+export const openReminder = (day: number) => {
 	return {
 		type: types.OPEN_REMINDER,
 		payload: {
-			day,
-			hour
+			day
+		}
+	};
+};
+
+export const editReminder = (reminder: any) => {
+	return {
+		type: types.EDIT_REMINDER,
+		payload: {
+			reminder
 		}
 	};
 };

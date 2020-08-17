@@ -63,6 +63,21 @@ export default (state = initialState, action: any) => {
 				month: newMonth
 			}
 
+		case types.DELETE_REMINDERS:
+			const newMonthReminders: Array<any> = [...state.month];
+			
+			for (const day of newMonthReminders) {
+				if(day.number === payload.day) {
+					newMonthReminders[payload.day - 1].reminders = [];
+					break;
+				}
+			}
+
+			return {
+				...state,
+				month: newMonthReminders
+			}
+
 		default:
 			return state;
 	}

@@ -25,7 +25,7 @@ const Calendar = () => {
 	return (
 		<>
 			<Header />
-			<Cells month={month} openList={(day: number) => dispatch(openList(day))} openReminder={(day: number, hour: Date) => dispatch(openReminder(day, hour))} />
+			<Cells month={month} openList={(day: number) => dispatch(openList(day))} openReminder={(day: number) => dispatch(openReminder(day))} />
 			<Reminder show={reminder.show} title={reminder.title} description={reminder.description} backgroundColor={reminder.backgroundColor} day={reminder.day} hour={reminder.hour} />
 			<List show={showList} day={month[selectedDay - 1]} />
 		</>

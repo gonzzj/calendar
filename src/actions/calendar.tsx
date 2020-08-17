@@ -24,3 +24,12 @@ export const closeList = () => {
 		type: types.CLOSE_LIST
 	}
 };
+
+export const deleteReminders = (day: number) => {
+	return {
+		type: types.DELETE_REMINDERS,
+		payload: {
+			day
+		}
+	}
+};

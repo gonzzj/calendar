@@ -15,8 +15,16 @@ export default (state = initialState, action: any) => {
 			return {
 				...state,
 				show: true,
-				day: payload.day,
-				hour: payload.hour
+				day: payload.day
+			};
+
+		case types.EDIT_REMINDER:
+			return {
+				...state,
+				show: true,
+				title: payload.reminder.title,
+				description: payload.reminder.description,
+				backgroundColor: payload.reminder.backgroundColor
 			};
 
 		case types.SET_REMINDER_INPUT:

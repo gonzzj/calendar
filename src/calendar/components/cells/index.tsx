@@ -13,7 +13,7 @@ const Cells = ({ month, openList, openReminder } : ICells) => (
             <div 
                 className={"column calendar-cell calendar-column " + (!isEmpty(day) ? "calendar-day" : "")} 
                 key={indexDay} 
-                onClick={() => isEmpty(day.reminders) ? openReminder(day.number, day.number) : openList(day.number)}
+                onClick={() => isEmpty(day.reminders) ? openReminder(day.number) : openList(day.number)}
             >
                 <strong>{day.number}</strong>
                 {day.reminders.map((reminder: any, indexReminder: number) => {
