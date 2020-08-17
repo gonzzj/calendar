@@ -32,7 +32,8 @@ export default (state = initialState, action: any) => {
 			const newReminder = {
 				hour: payload.hour,
 				title: payload.title,
-				description: payload.description
+				description: payload.description,
+				backgroundColor: payload.backgroundColor
 			};
 
 			for (const day of newMonth) {

@@ -9,7 +9,7 @@ interface ICells {
 const Cells = ({ month, onClick } : ICells) => (
     <div className={"columns is-gapless is-multiline"}>
         {month.map((day: any, indexDay: number) => (
-            <div className={"column calendar-cell calendar-column " + (!isEmpty(day) && "calendar-day")} key={indexDay} onClick={() => onClick(day.number, day.number)}>
+            <div className={"column calendar-cell calendar-column " + (!isEmpty(day) ? "calendar-day" : "")} key={indexDay} onClick={() => onClick(day.number, day.number)}>
                 <strong>{day.number}</strong>
                 {day.reminders.map((reminder: any, indexReminder: number) => {
                     if (indexReminder === 2) {
@@ -18,7 +18,7 @@ const Cells = ({ month, onClick } : ICells) => (
                         return <></>;
                     }
 
-                    return <span className={"tag is-warning"} key={indexReminder}>{reminder.title}</span>;
+                    return <span className={"tag"} style={{backgroundColor: reminder.backgroundColor, color: "#fff"}} key={indexReminder}>{reminder.title}</span>;
                 })}
             </div>
         ))}

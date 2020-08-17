@@ -4,7 +4,7 @@ const initialState = {
 	show: false,
 	title: '',
 	description: '',
-	color: ''
+	backgroundColor: ''
 };
 
 export default (state = initialState, action: any) => {

@@ -7,15 +7,17 @@ interface IReminder {
     title: string,
     description: string,
     day: number,
-    hour: Date
+    hour: Date,
+    backgroundColor: string
 };
 
-const Reminder = ({ show, day, hour, title, description } : IReminder) =>  {
+const Reminder = ({ show, day, hour, title, description, backgroundColor } : IReminder) =>  {
 
     const dispatch = useDispatch();
+    const colors = ["#363636", "#3273dc", "#48c774", "#ffd325", "#f14668"];
 
     return (
-        <div className={"modal " + (show && 'is-active')}>
+        <div className={"modal " + (show ? 'is-active' : '')}>
             <div className={"modal-background"}></div>
             <div className={"modal-card"}>
                 <header className={"modal-card-head"}>
@@ -44,11 +46,14 @@ const Reminder = ({ show, day, hour, title, description } : IReminder) =>  {
                     <div className={"field"}>
                         <label className={"label"}>Background color</label>
                         <div className={"control"}>
+                            {colors.map(color => (
+                                <div key={color} onClick={() => dispatch(setReminderInput(color, "backgroundColor"))} className={"input-color " + (backgroundColor === color ? "selected" : "")} style={{backgroundColor: color}}></div>
+                            ))}
                         </div>
                     </div>
                 </section>
                 <footer className={"modal-card-foot"}>
-                    <button className={"button is-success"} onClick={() => dispatch(saveReminder(day, hour, title, description))}>Save reminder</button>
+                    <button className={"button is-success"} onClick={() => dispatch(saveReminder(day, hour, title, description, backgroundColor))}>Save reminder</button>
                     <button className={"button"} onClick={() => dispatch(closeReminder())}>Cancel</button>
                 </footer>
             </div>

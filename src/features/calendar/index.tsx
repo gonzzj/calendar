@@ -23,7 +23,7 @@ const Calendar = () => {
 		<>
 			<Header />
 			<Cells month={month} onClick={(day: number, hour: Date) => dispatch(openReminder(day, hour))} />
-			<Reminder show={reminder.show} title={reminder.title} description={reminder.description} day={reminder.day} hour={reminder.hour} />
+			<Reminder show={reminder.show} title={reminder.title} description={reminder.description} backgroundColor={reminder.backgroundColor} day={reminder.day} hour={reminder.hour} />
 		</>
 	)
 }

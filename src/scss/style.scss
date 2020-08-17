@@ -40,3 +40,14 @@
 .calendar-day {
     cursor: pointer;
 }
+
+.input-color {
+    height: 40px;
+    width: 80px; 
+    display: inline-flex;
+    margin-right: 12px;
+
+    &.selected {
+        border: 3px solid #ef00ff;
+    }
+}
