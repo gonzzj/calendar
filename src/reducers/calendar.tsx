@@ -35,6 +35,7 @@ export default (state = initialState, action: any) => {
 				selectedDay: payload.day
 			}
 
+		case types.OPEN_REMINDER:
 		case types.CLOSE_LIST:
 			return {
 				...state,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setReminderInput, saveReminder, closeReminder } from '../../../../actions/reminder';
+import { setReminderInput, saveReminder, closeReminder } from '../../../actions/reminder';
 
 interface IReminder {
     show: boolean,

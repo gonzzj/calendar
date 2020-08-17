@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reducer from './reducers';
-import Calendar from './features/calendar';
+import Calendar from './calendar';
 
 const store = createStore(
 	reducer,

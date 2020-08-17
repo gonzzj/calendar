@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { closeList } from '../../../../actions/calendar';
+import { closeList } from '../../../actions/calendar';
 
 interface IList {
     show: boolean,

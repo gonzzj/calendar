@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { get } from 'lodash';
-import { setMonth, openList } from '../../actions/calendar';
-import { openReminder } from '../../actions/reminder';
+import { setMonth, openList } from '../actions/calendar';
+import { openReminder } from '../actions/reminder';
 import Header from './components/header';
 import Cells from './components/cells';
 import Reminder from './components/reminder';
