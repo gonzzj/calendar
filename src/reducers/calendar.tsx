@@ -1,4 +1,5 @@
 import * as types from '../actions/types';
+import { isUndefined } from 'lodash';
 
 const initialState = {
 	month: [],
@@ -44,16 +45,24 @@ export default (state = initialState, action: any) => {
 			
 		case types.SAVE_REMINDER:
 			const newMonth: Array<any> = [...state.month];
+
 			const newReminder = {
-				hour: payload.hour,
-				title: payload.title,
-				description: payload.description,
-				backgroundColor: payload.backgroundColor
+				id: payload.reminder.id,
+				hour: payload.reminder.hour,
+				title: payload.reminder.title,
+				description: payload.reminder.description,
+				backgroundColor: payload.reminder.backgroundColor
 			};
 
 			for (const day of newMonth) {
-				if(day.number === payload.day) {
-					newMonth[payload.day - 1].reminders.push(newReminder);
+				if(day.number === payload.reminder.day) {
+					if (isUndefined(newReminder.id)) {
+						newReminder.id = newMonth[payload.reminder.day - 1].reminders.length; 
+						newMonth[payload.reminder.day - 1].reminders.push(newReminder);
+					} else {
+						newMonth[payload.reminder.day - 1].reminders[newReminder.id] = newReminder;
+					}
+
 					break;
 				}
 			}

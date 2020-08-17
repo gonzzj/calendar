@@ -9,11 +9,12 @@ export const openReminder = (day: number) => {
 	};
 };
 
-export const editReminder = (reminder: any) => {
+export const editReminder = (reminder: any, day: number) => {
 	return {
 		type: types.EDIT_REMINDER,
 		payload: {
-			reminder
+			reminder,
+			day
 		}
 	};
 };
@@ -28,15 +29,11 @@ export const setReminderInput = (value: string, key: string) => {
 	};
 };
 
-export const saveReminder = (day: number, hour: string, title: string, description: string, backgroundColor: string) => {
+export const saveReminder = (reminder: any) => {
 	return {
 		type: types.SAVE_REMINDER,
 		payload: {
-			day,
-			hour,
-			title,
-			description,
-			backgroundColor
+			reminder
 		}
 	};
 };
