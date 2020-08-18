@@ -1,5 +1,6 @@
 import * as types from '../actions/types';
 import { isUndefined } from 'lodash';
+import { IDay } from '../types/types';
 
 const initialState = {
 	month: [],
@@ -44,18 +45,20 @@ export default (state = initialState, action: any) => {
 			}
 			
 		case types.SAVE_REMINDER:
-			const newMonth: Array<any> = [...state.month];
-
+			const newMonth: Array<IDay> = [...state.month];
+			const dataReminder = payload.reminder;
+			
 			const newReminder = {
-				id: payload.reminder.id,
-				hour: payload.reminder.hour,
-				title: payload.reminder.title,
-				description: payload.reminder.description,
-				backgroundColor: payload.reminder.backgroundColor || "#3273dc"
+				id: dataReminder?.id,
+				hour: dataReminder.hour,
+				title: dataReminder.title,
+				description: dataReminder?.description,
+				backgroundColor: dataReminder.backgroundColor || "#3273dc",
+				day: dataReminder.day
 			};
 
 			for (const day of newMonth) {
-				if(day.number === payload.reminder.day) {
+				if(day.number === dataReminder.day) {
 					if (isUndefined(newReminder.id)) {
 						newReminder.id = newMonth[payload.reminder.day - 1].reminders.length; 
 						newMonth[payload.reminder.day - 1].reminders.push(newReminder);
@@ -74,7 +77,7 @@ export default (state = initialState, action: any) => {
 			}
 
 		case types.DELETE_REMINDERS:
-			const newMonthReminders: Array<any> = [...state.month];
+			const newMonthReminders: Array<IDay> = [...state.month];
 			
 			for (const day of newMonthReminders) {
 				if(day.number === payload.day) {

@@ -2,12 +2,13 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { sortBy } from 'lodash';
 import moment from 'moment';
+import { IDay, IReminder } from '../../../types/types';
 import { closeList, deleteReminders } from '../../../actions/calendar';
 import { openReminder, editReminder } from '../../../actions/reminder';
 
 interface IList {
     show: boolean,
-    day: any
+    day: IDay
 }
 
 const List = ({ show, day } : IList) => {
@@ -21,7 +22,7 @@ const List = ({ show, day } : IList) => {
                 <span className={"delete"} data-dismiss="quickview" onClick={() => dispatch(closeList())}></span>
             </header>
             <div className={"quickview-body my-4"}>
-                {sortBy(day?.reminders, ["hour"]).map((reminder: any, index: number) => (
+                {sortBy(day?.reminders, ["hour"]).map((reminder: IReminder, index: number) => (
                     <div 
                         key={index} 
                         className={"quickview-block px-4 py-4 mb-4"} 

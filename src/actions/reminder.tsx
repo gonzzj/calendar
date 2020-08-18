@@ -1,4 +1,5 @@
 import * as types from './types';
+import { IReminder } from '../types/types';
 
 export const openReminder = (day: number) => {
 	return {
@@ -9,7 +10,7 @@ export const openReminder = (day: number) => {
 	};
 };
 
-export const editReminder = (reminder: any, day: number) => {
+export const editReminder = (reminder: IReminder, day: number) => {
 	return {
 		type: types.EDIT_REMINDER,
 		payload: {
@@ -29,7 +30,7 @@ export const setReminderInput = (value: string, key: string) => {
 	};
 };
 
-export const saveReminder = (reminder: any) => {
+export const saveReminder = (reminder: IReminder) => {
 	return {
 		type: types.SAVE_REMINDER,
 		payload: {

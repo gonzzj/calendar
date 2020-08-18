@@ -12,13 +12,13 @@ const mapStateToProps = (state: any) => {
     const cells = [...calendar.month];
 
     if (!isEmpty(calendar.month)) {
-        for (let index = 0; index < moment().date(1).day(); index++) {
+        for (let index: number = 0; index < moment().date(1).day(); index++) {
             cells.unshift({});
         }
         
         const tableTotal: number = 7 - cells.length % 7;
 
-        for (let index = 0; index < tableTotal; index++) {
+        for (let index: number = 0; index < tableTotal; index++) {
             cells.push({});
         }
     }

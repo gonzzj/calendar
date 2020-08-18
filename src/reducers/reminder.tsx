@@ -2,10 +2,12 @@ import * as types from '../actions/types';
 
 const initialState = {
 	show: false,
-	title: '',
-	hour: '',
-	description: '',
-	backgroundColor: ''
+	data: {
+		title: '',
+		hour: '',
+		description: '',
+		backgroundColor: ''
+	}
 };
 
 export default (state = initialState, action: any) => {
@@ -16,25 +18,32 @@ export default (state = initialState, action: any) => {
 			return {
 				...state,
 				show: true,
-				day: payload.day
+				data: {
+					day: payload.day
+				}
 			};
 
 		case types.EDIT_REMINDER:
 			return {
 				...state,
 				show: true,
-				id: payload.reminder.id,
-				title: payload.reminder.title,
-				hour: payload.reminder.hour,
-				description: payload.reminder.description,
-				backgroundColor: payload.reminder.backgroundColor,
-				day: payload.day
+				data: {
+					id: payload.reminder.id,
+					title: payload.reminder.title,
+					hour: payload.reminder.hour,
+					description: payload.reminder.description,
+					backgroundColor: payload.reminder.backgroundColor,
+					day: payload.day
+				}
 			};
 
 		case types.SET_REMINDER_INPUT:
 			return {
 				...state,
-				[payload.key]: payload.value
+				data: {
+					...state.data,
+					[payload.key]: payload.value
+				}
 			};
 
 		case types.SAVE_REMINDER:
