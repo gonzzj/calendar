@@ -1,9 +1,9 @@
 export interface IReminder {
-    id: number
+    id?: number
     hour: string
     title: string
-    description: string
-    backgroundColor: string
+    description?: string
+    backgroundColor?: string
     day: number
 }
 
