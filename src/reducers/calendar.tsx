@@ -1,5 +1,5 @@
 import * as types from '../actions/types';
-import { isUndefined } from 'lodash';
+import { isUndefined, remove } from 'lodash';
 import { IDay } from '../types/types';
 
 const initialState = {
@@ -76,12 +76,28 @@ export default (state = initialState, action: any) => {
 				showList: false
 			}
 
+		case types.DELETE_REMINDER:
+			const monthReminders: Array<IDay> = [...state.month];
+			
+			for (const day of monthReminders) {
+				if(day.number === payload.day) {
+					remove(day.reminders, reminder => reminder.id === payload.id);
+					break;
+				}
+			}
+
+			return {
+				...state,
+				showList: false,
+				month: monthReminders
+			}
+
 		case types.DELETE_REMINDERS:
 			const newMonthReminders: Array<IDay> = [...state.month];
 			
 			for (const day of newMonthReminders) {
 				if(day.number === payload.day) {
-					newMonthReminders[payload.day - 1].reminders = [];
+					day.reminders = [];
 					break;
 				}
 			}

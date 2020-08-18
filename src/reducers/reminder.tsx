@@ -45,7 +45,8 @@ export default (state = initialState, action: any) => {
 					[payload.key]: payload.value
 				}
 			};
-
+		
+		case types.DELETE_REMINDER:
 		case types.SAVE_REMINDER:
 		case types.CLOSE_REMINDER:
 			return initialState;

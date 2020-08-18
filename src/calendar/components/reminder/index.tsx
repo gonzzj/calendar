@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { isEmpty } from 'lodash';
+import { isEmpty, isUndefined } from 'lodash';
+import { deleteReminder } from '../../../actions/calendar';
 import { setReminderInput, saveReminder, closeReminder } from '../../../actions/reminder';
 
 interface IReminder {
@@ -25,7 +26,7 @@ const Reminder = ({ reminder, show } : IReminder) => {
             <div className={"modal-background"}></div>
             <div className={"modal-card"}>
                 <header className={"modal-card-head"}>
-                    <p className={"modal-card-title"}>New Reminder</p>
+                    <p className={"modal-card-title"}>Reminder</p>
                     <button className={"delete"} aria-label="close" onClick={() => dispatch(closeReminder())}></button>
                 </header>
                 <section className={"modal-card-body"}>
@@ -58,6 +59,7 @@ const Reminder = ({ reminder, show } : IReminder) => {
                 </section>
                 <footer className={"modal-card-foot"}>
                     <button className={"button is-success"} onClick={() => dispatch(saveReminder(reminder))} disabled={isEmpty(reminder?.title) || isEmpty(reminder?.hour)}>Save reminder</button>
+                    {!isUndefined(reminder.id) ? <button className={"button is-danger"} onClick={() => dispatch(deleteReminder(reminder.day, reminder.id))}>Delete reminder</button> : ''}
                     <button className={"button"} onClick={() => dispatch(closeReminder())}>Cancel</button>
                 </footer>
             </div>
